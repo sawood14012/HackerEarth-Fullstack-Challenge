@@ -1,0 +1,42 @@
+extends layout
+block content
+    .pf-c-page__main-body
+        .pf-c-content
+          center 
+            h1 #{data.ImgName}
+        section.pf-c-page__main-section.pf-m-limit-width.pf-m-overflow-scroll
+            .pf-c-page__main-body
+                .pf-c-action-list
+                    .pf-c-action-list__item
+                        .pf-l-level.pf-m-gutter
+                            .pf-l-level__item 
+                                a.pf-c-button.pf-m-primary(href='/#{data.ID}/edit') Edit
+                            .pf-c-divider.pf-m-vertical.pf-m-inset-md.pf-m-inset-none-on-md.pf-m-inset-lg-on-lg.pf-m-inset-sm-on-xl(role='separator')
+                            .pf-l-level__item 
+                                button.pf-c-button.pf-c-button.pf-m-danger(type='button' onclick='MakeDeleteCall()') Delete
+            br 
+            .pf-c-divider(role='separator')
+            ul.pf-l-grid.pf-m-gutter.pf-m-all-6-col-on-sm
+                li.pf-l-grid__item
+                    br
+                    img(src=data.ImgURL)
+                li.pf-l-grid__item
+                    br
+                    dl.pf-c-description-list.pf-m-horizontal
+                      .pf-c-description-list__group
+                        dt.pf-c-description-list__term
+                            span.pf-c-description-list__text Image Name
+                        dd.pf-c-description-list__description
+                          .pf-c-description-list__text #{data.ImgName}
+                      .pf-c-description-list__group
+                        dt.pf-c-description-list__term
+                            span.pf-c-description-list__text Image URL
+                        dd.pf-c-description-list__description
+                            .pf-c-description-list__text
+                                a(href='#') #{data.ImgURL}
+                      .pf-c-description-list__group
+                        dt.pf-c-description-list__term
+                            span.pf-c-description-list__text Image Details
+                        dd.pf-c-description-list__description
+                            .pf-c-description-list__text #{data.ImgDetails}
+      

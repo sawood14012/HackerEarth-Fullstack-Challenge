@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/patternfly.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-addons.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-base-no-reset.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-base.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-charts.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-date-picker.css')
+    link(rel='stylesheet', href='/stylesheets/patternfly-no-reset.css')
+    script(type='text/javascript').
+      function MakeDeleteCall(){
+        var xhttp = new XMLHttpRequest();
+        var data = !{JSON.stringify(data)};
+        
+        var id = data.ID;
+        
+        var DELETEURL = '/delete/'+id
+        xhttp.open("DELETE", DELETEURL);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send();
+        alert('Deleted!'+id);
+        window.location.href='/'
+      }
+      function MakePutCall(){
+        var xhttp = new XMLHttpRequest();
+        var data = !{JSON.stringify(data)};
+        
+        var id = data.ID;
+        
+        var ImgName = document.getElementById("Iname").value;
+        var ImgURL = document.getElementById("Iurl").value;
+        var ImgDetails = document.getElementById("Idetails").value;
+        console.log(ImgDetails);
+        var PUTURL = '/'+id+'/edit'
+        xhttp.open("PUT", PUTURL);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var encodedStr = "ImgName="+ImgName+"&"+"ImgURL="+ImgURL+"&"+"ImgDetails="+ImgDetails;
+        xhttp.send(encodedStr);
+        alert('Updated values!');
+        window.location.href='/';
+      }
+  body
+#page-demo-masthead-component.pf-c-page
+  header.pf-c-page__header
+    a.pf-c-skip-to-content.pf-c-button.pf-m-primary(href='#main-content-page-demo-masthead-component') Skip to content
+    header#page-demo-masthead-component-masthead.pf-c-masthead
+      span.pf-c-masthead__toggle
+        button.pf-c-button.pf-m-plain(type='button' aria-label='Global navigation')
+          i.fas.fa-bars(aria-hidden='true')
+      .pf-c-masthead__main
+        a.pf-c-masthead__brand(href='#') Images Gallery 
+  .pf-c-page__sidebar
+    .pf-c-page__sidebar-body
+      nav#page-demo-masthead-component-primary-nav.pf-c-nav(aria-label='Global')
+        ul.pf-c-nav__list
+          li.pf-c-nav__item
+            a.pf-c-nav__link(href='/') Home
+          li.pf-c-nav__item
+            a.pf-c-nav__link(href='/new') Add New
+  main#main-content-page-demo-masthead-component.pf-c-page__main(tabindex='-1')
+    section.pf-c-page__main-section.pf-m-limit-width.pf-m-light.pf-m-shadow-bottom
+        block content
+      

@@ -1,0 +1,20 @@
+extends layout
+block content
+  .pf-c-page__main-body
+        .pf-c-content
+          center 
+            h1 Images Gallery Home
+            p displays All images in the gallery
+    section.pf-c-page__main-section.pf-m-limit-width.pf-m-overflow-scroll
+      .pf-c-page__main-body
+        .pf-l-gallery.pf-m-gutter
+          each val in doc
+            .pf-l-gallery__item
+              .pf-c-card.pf-m-hoverable.pf-m-rounded
+                .pf-c-card__header
+                  .pf-c-card__header-main
+                    img(src='#{val.ImgURL}' width='300px' alt='Logo')
+                .pf-c-card__title #{val.ImgName}
+                .pf-c-card__body.pf-m-no-fill #{val.ImgDetails}
+                .pf-c-card__footer 
+                  a.pf-c-button.pf-m-primary(href='/show/#{val.ID}') Show

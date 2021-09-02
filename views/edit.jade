@@ -1,0 +1,33 @@
+extends layout
+block content
+  .pf-c-page__main-body
+    .pf-c-content
+      center 
+        h1 Edit Image #{data.ImgName}
+      section.pf-c-page__main-section.pf-m-limit-width.pf-m-overflow-scroll
+        .pf-c-page__main-body
+          form.pf-c-form.pf-m-horizontal
+            .pf-c-form__group
+              .pf-c-form__group-label
+                label.pf-c-form__label(for='Iname')
+                  span.pf-c-form__label-text Image Name
+                  span.pf-c-form__label-required(aria-hidden='true') *
+              .pf-c-form__group-control
+                input#Iname.pf-c-form-control(type='text' name='ImgName' required value=data.ImgName)
+            .pf-c-form__group
+              .pf-c-form__group-label
+                label.pf-c-form__label(for='Iurl')
+                  span.pf-c-form__label-text Image URL
+                  span.pf-c-form__label-required(aria-hidden='true') *
+              .pf-c-form__group-control
+                input#Iurl.pf-c-form-control(type='text' name='ImgURL' required pattern="https?://.+" value=data.ImgURL)
+            .pf-c-form__group
+              .pf-c-form__group-label
+                label.pf-c-form__label(for='Idetails')
+                  span.pf-c-form__label-text Image Details
+                  span.pf-c-form__label-required(aria-hidden='true') *
+              .pf-c-form__group-control
+                textarea#Idetails.pf-c-form-control(type='text' name='ImgDetails' required) #{data.ImgDetails}
+            .pf-c-form__group.pf-m-action
+              .pf-c-form__actions
+                button.pf-c-button.pf-m-primary(onclick='MakePutCall()') Update
