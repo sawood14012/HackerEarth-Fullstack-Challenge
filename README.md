@@ -24,3 +24,6 @@ Copy your Firebase service account file to `routes/serviceaccount.json`
 ## Running the project
 
     $ npm start
+
+## Run Unit Tests
+    $ npm test
